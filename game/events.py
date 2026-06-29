@@ -6,22 +6,22 @@
 import random
 
 def randomevent(player, inventory):
-    event = random.randint(1, 11)
+    event = random.randint(1, 12)
     
     if event == 1:
         print("You got sick, you start throwing up")
         player.health -= 15
         
     elif event == 2:
-        print("You found gold")
+        print("You found a pouch full of gold coins")
         inventory.gold += 2
-        
+    
     elif event == 3:
         print("You found a new map")
         inventory.map += 1
         
     elif event == 4:
-        print("A wheel broke")
+        print("A wheel on the wagon broke")
         player.distance += 25
     
     elif event == 5:
@@ -53,6 +53,15 @@ def randomevent(player, inventory):
         player.health += 15
         inventory.food += 10
         player.morale += 10
+        
+    elif event == 11:
+        print("You found a toolbox")
+        inventory.tools += 5
+        
+    elif event == 12:
+        print("A severe thunderstorm approaches")
+        player.morale -= 10
+        player.health -= 5
         
     else:
         print("Nothing Happened")
