@@ -6,7 +6,7 @@
 import random
 
 def randomevent(player, inventory):
-    event = random.randint(1, 12)
+    event = random.randint(1, 15)
     
     if event == 1:
         print("You got sick, you start throwing up")
@@ -22,7 +22,7 @@ def randomevent(player, inventory):
         
     elif event == 4:
         print("A wheel on the wagon broke")
-        player.distance += 25
+        player.distance += 15
     
     elif event == 5:
         print("Someone appears out of nowhere and steals your water supply.")
@@ -62,6 +62,12 @@ def randomevent(player, inventory):
         print("A severe thunderstorm approaches")
         player.morale -= 10
         player.health -= 5
+        
+    elif event == 13:
+        print("Bad luck, you twisted your ankle")
+        player.morale -= 10
+        player.distance += 10
+        player.health -= 10
         
     else:
         print("Nothing Happened")
