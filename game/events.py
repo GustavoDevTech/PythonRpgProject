@@ -6,7 +6,7 @@
 import random
 
 def randomevent(player, inventory):
-    event = random.randint(1, 15)
+    event = random.randint(1, 14)
     
     if event == 1:
         print("You got sick, you start throwing up")
