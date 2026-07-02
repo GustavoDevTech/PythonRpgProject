@@ -3,12 +3,6 @@
 # Allows the player to hunt for food.
 # Uses random outcomes to determine success.
 # Updates food, bullets, and health
-# Random Text Hunting
-# lets the player hunt for food
-# uses random numbers to figure out if it works or not
-# changes food, bullets, and health
-# also has a really rare item you can find while hunting
-
 import random
 
 def hunt(player, inventory):
@@ -17,59 +11,19 @@ def hunt(player, inventory):
         print("You dont have any bullets left, cant hunt right now")
     else:
         inventory.bullets -= 1
-        outcome = random.randint(1, 10)
+        outcome = random.randint(1, 2)
         
         if outcome == 1:
-            food = random.randint(20, 40)
+            food = random.randint(15, 35)
             inventory.food += food
-            print("You shot a deer! You got " + str(food) + " lbs of food")
-            
-        elif outcome == 2:
-            food = random.randint(20, 40)
-            inventory.food += food
-            print("You shot a deer! You got " + str(food) + " lbs of food")
-            
-        elif outcome == 3:
-            food = random.randint(20, 40)
-            inventory.food += food
-            print("You shot a deer! You got " + str(food) + " lbs of food")
-            
-        elif outcome == 4:
-            food = random.randint(20, 40)
-            inventory.food += food
-            print("You shot a deer! You got " + str(food) + " lbs of food")
-            
-        elif outcome == 5:
-            food = random.randint(5, 15)
-            inventory.food += food
-            print("You shot a rabbit, not much but you got " + str(food) + " lbs of food")
-            
-        elif outcome == 6:
-            food = random.randint(5, 15)
-            inventory.food += food
-            print("You shot a rabbit, not much but you got " + str(food) + " lbs of food")
-            
-        elif outcome == 7:
-            food = random.randint(5, 15)
-            inventory.food += food
-            print("You shot a rabbit, not much but you got " + str(food) + " lbs of food")
-            
-        elif outcome == 8:
-            print("The animal ran away before you could shoot it. You got nothing")
-            
-        elif outcome == 9:
-            print("You walked around for hours and didnt find anything to hunt")
-            player.morale -= 5
-            
+            print("You got a shot off and hit the animal! You got " + str(food) + " lbs of meat")
         else:
-            damage = random.randint(5, 15)
-            player.health -= damage
-            print("You tripped and hurt yourself while hunting, lost " + str(damage) + " health")
+            print("You took the shot but missed. The animal ran off, you got nothing")
         
         print("Bullets left: " + str(inventory.bullets))
         print("Food: " + str(inventory.food))
-        print("Health: " + str(player.health))
         
+      
         rareRoll = random.randint(1, 200)
         if rareRoll == 1:
             if inventory.sign_in_sheet == 0:
@@ -81,3 +35,26 @@ def hunt(player, inventory):
                 print("Just holding onto it makes you feel unstoppable. Morale and max health went up.")
             else:
                 print("You find another Professor Agars Sign In Sheet but you already have one so you leave it")
+
+
+def forage(player, inventory):
+    
+    find = random.randint(1, 3)
+    
+    if find == 1:
+        print("You find some berries and eat some before checking if they were safe... turns out they were poisonous")
+        damage = random.randint(10, 25)
+        player.health -= damage
+        print("You lost " + str(damage) + " health")
+        
+    elif find == 2:
+        food = random.randint(5, 20)
+        inventory.food += food
+        print("You find some berries and they turn out to be safe to eat. You got " + str(food) + " lbs of food")
+        
+    else:
+        inventory.tools += 1
+        print("You find some sharp rocks good for making spearheads. Tools went up")
+    
+    print("Food: " + str(inventory.food))
+    print("Health: " + str(player.health))
